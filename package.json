@@ -1,0 +1,23 @@
+{
+  "name": "what-eats",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NSkelin/what-eats.git"
+  },
+  "author": "Nicholas Skelin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NSkelin/what-eats/issues"
+  },
+  "homepage": "https://github.com/NSkelin/what-eats#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "hbs": "^4.0.4"
+  }
+}
