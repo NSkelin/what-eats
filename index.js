@@ -9,7 +9,19 @@ hbs.registerPartials(__dirname + '/views/partials');
 app.use(express.static(__dirname + '/public'));
 
 app.get('/', (req, res) => {
-    res.render('home.hbs');
+    res.render('landingPage.hbs');
+});
+
+app.get('/homePage', (req, res) => {
+    res.render('homePage.hbs');
+});
+
+app.get('/customisePage', (req, res) => {
+    res.render('customiseFoodPage.hbs');
+});
+
+app.get('/accountPage', (req, res) => {
+    res.render('customiseFoodPage.hbs');
 });
 
 const port = process.env.PORT || 8080;
