@@ -2,9 +2,41 @@
 <html>
 	<head>
 		<title>Customise Menu</title>
+		<link href='styles/navbar.css' rel='stylesheet' type='text/css'/>
+		<link href='styles/customise.css' rel='stylesheet' type='text/css'/>
 	</head>
 	<body>
 		{{>navbar}}
-		Customise food page.
+		<h2>Create or change the dishes in your menu!</h2>
+		<div>
+			<h3>What part of the meal is this?</h3>
+			<input type="radio" value="Main-Dish" name="dishType" onclick="selectDishType();"/>Main-Dish
+			<input type="radio" value="Side-Dish" name="dishType" onclick="selectDishType();"/>Side-Dish
+		</div>
+		<div>
+			<h3>are you adding a new dish or changing an old one?</h3>
+			<select id="dishSelection" onchange="selectDish();">
+				<option value="" disabled selected hidden>Choose an option...</option>
+				<option value="newDish">Add a new dish</option>
+				<!-- <option value="dish1">dish1</option> -->
+				<!-- <option value="dish2">dish2</option> -->
+			</select>
+		</div>
+		<div>
+			<div>
+				<h4>dish name<br></h4>
+				<input id="dishName"/>
+			</div>
+			<div>
+				<h4>description (optional)<br></h4>
+				<textarea id="dishDesc" rows="5" cols="50"></textarea>
+			</div>
+			<div>
+				<button id="confirm">Confirm</button>
+			</div>
+		</div>
+
+		<script src="scripts/customise.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	</body>
 </html>
