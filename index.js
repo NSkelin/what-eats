@@ -19,6 +19,16 @@ app.get('/', (req, res) => {
     res.render('landingPage.hbs');
 });
 
+app.post('/signup', (req, res) => {
+	console.log(req.body);
+	res.redirect('/homePage');
+});
+
+app.post('/login', (req, res) => {
+	console.log(req.body);
+	res.redirect('/homePage');
+});
+
 app.get('/homePage', (req, res) => {
     res.render('homePage.hbs');
 });

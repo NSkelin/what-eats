@@ -3,9 +3,21 @@
 	<head>
 		<title>Home</title>
 		<link href='styles/navbar.css' rel='stylesheet' type='text/css'/>
+		<link href='styles/home.css' rel='stylesheet' type='text/css'/>
 	</head>
 	<body>
 		{{>navbar}}
-		Home page.
+		<div>
+			<h2>Your Menu</h2>
+			<div>
+				<button onclick="test();">Generate a new menu</button>
+				<a href="/customisePage">Customize your foods</a>
+			</div>
+		</div>
+		<h2>This weeks menu</h2>
+		<div id="menu">
+			
+		</div>
+		<script src="scripts/home.js"></script>
 	</body>
 </html>

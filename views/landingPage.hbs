@@ -1,15 +1,22 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>XD</title>
-		<link href='style/about.css' rel='stylesheet' type='text/css'/>
+		<title>What-Eats</title>
+		<link href='styles/landing.css' rel='stylesheet' type='text/css'/>
 	</head>
 	<body>
-		{{>navbar}}
-		<div id="loginPanel">
-			<input placeholder="Enter your Username" type="text"/>
-			<input placeholder="Enter your Password" type="password"/>
-		</div>
-		landing page for what eats
+		<form id="loginPanel" method="POST" action='/login'>
+			<input id="loginEmail" name='login' placeholder="Enter your Email" type="text"/>
+			<input id="loginPassword" name="password" placeholder="Enter your Password" type="password"/>
+			<button>Login</button>
+		</form>
+		<form id="signupPanel" method="POST" action='/signup'>
+			<input id="signupEmail" name='login' placeholder="Enter your Email" type="text"/>
+			<input id="signupPassword" name="password" placeholder="Enter your Password" type="password"/>
+			<button>Signup</button>
+		</form>>
+		What-Eats, for when you just dont know what to eat!
+		<script src="scripts/landing.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	</body>
 </html>
