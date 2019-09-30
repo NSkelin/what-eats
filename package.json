@@ -18,6 +18,8 @@
   "homepage": "https://github.com/NSkelin/what-eats#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "hbs": "^4.0.4"
+    "firebase": "^6.6.2",
+    "firebase-admin": "^8.6.0",
+    "hbs": "^4.0.5"
   }
 }
