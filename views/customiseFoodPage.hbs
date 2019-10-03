@@ -10,16 +10,14 @@
 		<h2>Create or change the dishes in your menu!</h2>
 		<div>
 			<h3>What part of the meal is this?</h3>
-			<input type="radio" value="Main-Dish" name="dishType" onclick="selectDishType();"/>Main-Dish
-			<input type="radio" value="Side-Dish" name="dishType" onclick="selectDishType();"/>Side-Dish
+			<input type="radio" value="mainDishes" name="dishType" onclick="selectDishType();"/>Main-Dish
+			<input type="radio" value="sideDishes" name="dishType" onclick="selectDishType();"/>Side-Dish
 		</div>
 		<div>
 			<h3>are you adding a new dish or changing an old one?</h3>
 			<select id="dishSelection" onchange="selectDish();">
 				<option value="" disabled selected hidden>Choose an option...</option>
 				<option value="newDish">Add a new dish</option>
-				<!-- <option value="dish1">dish1</option> -->
-				<!-- <option value="dish2">dish2</option> -->
 			</select>
 		</div>
 		<div>
@@ -33,6 +31,7 @@
 			</div>
 			<div>
 				<button id="confirm">Confirm</button>
+				<button id="delete">Delete</button>
 			</div>
 		</div>
 

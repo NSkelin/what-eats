@@ -82,15 +82,98 @@ app.get('/customisePage', (req, res) => {
     res.render('customiseFoodPage.hbs');
 });
 
+function getDishes(type) {
+	return new Promise((resolve, reject)=> {
+		let email = firebase.auth().currentUser.email;
+		let setDoc = db.collection('users').doc(email).collection(type).get()
+		.then(snapshot => {
+			let dishes = []
+			snapshot.forEach(doc => {
+				console.log(doc.id, '=>', doc.data());
+				dishes.push({'id': doc.id, 'name': doc.data().name});
+			});
+			resolve(dishes);
+		})
+		.catch(err => {
+			console.log('Error getting documents', err);
+		});
+	})
+}
+
+app.get('/getMainDishes', (req, res) => {
+	getDishes('mainDishes')
+	.then((dishes) => {
+		res.send(dishes);
+	});
+})
+app.get('/getSideDishes', (req, res) => {
+	getDishes('sideDishes')
+	.then((dishes) => {
+		res.send(dishes);
+	});
+})
+
+app.post('/getDish', (req, res) => {
+	console.log(req.body);
+	let email = firebase.auth().currentUser.email;
+	let type = req.body.type
+	let name = req.body.name
+	let setDoc = db.collection('users').doc(email).collection(type).doc(name).get()
+	.then(doc => {
+		if (!doc.exists) {
+			console.log('No such document!');
+		} else {
+			console.log('Document data:', doc.data());
+			res.send(doc.data());
+		}
+	})
+	.catch(err => {
+	console.log('Error getting document', err);
+	});
+})
+
 app.get('/logout', (req, res) => {
 	res.redirect('/');
 })
 
 app.post('/addDish', (req, res) => {
 	//save to database
-	console.log(req.body.name);
+	console.log(req.body);
+	let email = firebase.auth().currentUser.email;
+	let desc = '';
+	let id = req.body.id;
+	let name = req.body.name;
+	let type = req.body.type;
+
+	if (req.body.description) {
+		desc = req.body.description
+	}
+	let data = {
+		name: name,
+		description: desc
+	}
+	if (id != 'newDish') {
+		db.collection('users').doc(email).collection(type).doc(id).set(data);
+	} else {
+		db.collection('users').doc(email).collection(type).add(data);
+	}
+
 	res.send('ok');
 });
+
+app.post('/deleteDish', (req, res) => {
+	let id = req.body.id;
+	let type = req.body.type;
+	console.log(req.body);
+	let email = firebase.auth().currentUser.email;
+	db.collection('users').doc(email).collection(type).doc(id).delete()
+	.then((deleteDoc) => {
+		res.send('ok');
+	})
+	.catch((error) => {
+		res.send('not ok');
+	})
+})
 
 app.get('/accountPage', (req, res) => {
     res.render('customiseFoodPage.hbs');
